@@ -3,8 +3,10 @@ import SwiftData
 
 struct DashboardView: View {
     @Environment(\.modelContext) private var modelContext
+    @Environment(\.scenePhase) private var scenePhase
     @Query(sort: \Person.name) private var people: [Person]
     @State private var showingAddPerson = false
+    @State private var refreshID = UUID()
 
     var body: some View {
         NavigationStack {
@@ -21,6 +23,7 @@ struct DashboardView: View {
                         }
                     }
                     .padding()
+                    .id(refreshID)
                 }
             }
             .background(Color(.systemGroupedBackground))
@@ -36,6 +39,11 @@ struct DashboardView: View {
             }
             .sheet(isPresented: $showingAddPerson) {
                 AddPersonView()
+            }
+            .onChange(of: scenePhase) {
+                if scenePhase == .active {
+                    refreshID = UUID()
+                }
             }
         }
     }
