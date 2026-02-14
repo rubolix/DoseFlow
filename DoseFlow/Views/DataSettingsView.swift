@@ -3,7 +3,6 @@ import SwiftData
 
 struct DataSettingsView: View {
     @Environment(\.modelContext) private var modelContext
-    @State private var showingExportShare = false
     @State private var showingImportPicker = false
     @State private var showingImportConfirm = false
     @State private var showingResult = false
@@ -15,10 +14,14 @@ struct DataSettingsView: View {
     var body: some View {
         List {
             Section {
+                if let url = exportFileURL {
+                    ShareLink("Share Backup", item: url)
+                }
+
                 Button {
                     exportData()
                 } label: {
-                    Label("Export All Data", systemImage: "square.and.arrow.up")
+                    Label(exportFileURL == nil ? "Export All Data" : "Re-Export All Data", systemImage: "square.and.arrow.up")
                 }
 
                 Button {
@@ -34,11 +37,6 @@ struct DataSettingsView: View {
         }
         .navigationTitle("Data")
         .navigationBarTitleDisplayMode(.inline)
-        .sheet(isPresented: $showingExportShare) {
-            if let url = exportFileURL {
-                ShareSheet(url: url)
-            }
-        }
         .fileImporter(
             isPresented: $showingImportPicker,
             allowedContentTypes: [.json],
@@ -72,7 +70,9 @@ struct DataSettingsView: View {
             let tempURL = FileManager.default.temporaryDirectory.appendingPathComponent(fileName)
             try data.write(to: tempURL)
             exportFileURL = tempURL
-            showingExportShare = true
+            resultMessage = "Export ready! Tap \"Share Backup\" to save or send the file."
+            resultIsError = false
+            showingResult = true
         } catch {
             resultMessage = "Failed to export: \(error.localizedDescription)"
             resultIsError = true
@@ -113,14 +113,4 @@ struct DataSettingsView: View {
         }
         pendingImportURL = nil
     }
-}
-
-struct ShareSheet: UIViewControllerRepresentable {
-    let url: URL
-
-    func makeUIViewController(context: Context) -> UIActivityViewController {
-        UIActivityViewController(activityItems: [url], applicationActivities: nil)
-    }
-
-    func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {}
 }
