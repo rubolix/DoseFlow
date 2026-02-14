@@ -3,9 +3,11 @@ import SwiftData
 
 struct PersonDetailView: View {
     @Environment(\.modelContext) private var modelContext
+    @Environment(\.dismiss) private var dismiss
     let person: Person
     @State private var showingAddMed = false
     @State private var showingEditPerson = false
+    @State private var showingDeleteConfirm = false
 
     var body: some View {
         List {
@@ -28,15 +30,36 @@ struct PersonDetailView: View {
         .navigationTitle(person.name)
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
-                Button {
-                    showingAddMed = true
+                Menu {
+                    Button { showingAddMed = true } label: {
+                        Label("Add Medication", systemImage: "plus")
+                    }
+                    Button { showingEditPerson = true } label: {
+                        Label("Edit Person", systemImage: "pencil")
+                    }
+                    Divider()
+                    Button(role: .destructive) { showingDeleteConfirm = true } label: {
+                        Label("Delete Person", systemImage: "trash")
+                    }
                 } label: {
-                    Image(systemName: "plus")
+                    Image(systemName: "ellipsis.circle")
                 }
             }
         }
         .sheet(isPresented: $showingAddMed) {
             AddMedicationView(person: person)
+        }
+        .sheet(isPresented: $showingEditPerson) {
+            EditPersonView(person: person)
+        }
+        .alert("Delete \(person.name)?", isPresented: $showingDeleteConfirm) {
+            Button("Delete", role: .destructive) {
+                modelContext.delete(person)
+                dismiss()
+            }
+            Button("Cancel", role: .cancel) {}
+        } message: {
+            Text("This will delete all of \(person.name)'s medications and pickup history. This cannot be undone.")
         }
     }
 

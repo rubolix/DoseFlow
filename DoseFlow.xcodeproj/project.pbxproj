@@ -24,6 +24,9 @@
 		E5E9C5A9E4F84093A0D9D57E /* SchoolBottleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D4DE17C82F4EEEA2FBE765 /* SchoolBottleView.swift */; };
 		6494310BEEEB4F328C4BE5D4 /* PersonCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0DF70FC64840D48DB19EB6 /* PersonCard.swift */; };
 		114FF566F6BD4CDDA607C998 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 927B6BDA3CA94E4E8FD33B35 /* Assets.xcassets */; };
+		7D7C3B2CF0794EBA87F73CBA /* EditPickupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E63826B3E84C6D849D8D1A /* EditPickupView.swift */; };
+		21D3776C44D44E0EB71A342A /* EditMedicationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F179FC0327804BB9A7F75E6B /* EditMedicationView.swift */; };
+		1C154E11E5FE46059F375992 /* EditPersonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D07885332AB4A3C9FFAC931 /* EditPersonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +49,9 @@
 		F1D3A858CBA842288251028D /* DoseFlow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoseFlow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C2C4EC4669B40ABBC655406 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		927B6BDA3CA94E4E8FD33B35 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D7E63826B3E84C6D849D8D1A /* EditPickupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditPickupView.swift"; sourceTree = "<group>"; };
+		F179FC0327804BB9A7F75E6B /* EditMedicationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditMedicationView.swift"; sourceTree = "<group>"; };
+		4D07885332AB4A3C9FFAC931 /* EditPersonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditPersonView.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +115,9 @@
 				6F66B3B019544D88B67FCCC7 /* AddMedicationView.swift */,
 				A41BAC0F3BAF4DD198C32319 /* LogPickupView.swift */,
 				C3D4DE17C82F4EEEA2FBE765 /* SchoolBottleView.swift */,
+				4D07885332AB4A3C9FFAC931 /* EditPersonView.swift */,
+				F179FC0327804BB9A7F75E6B /* EditMedicationView.swift */,
+				D7E63826B3E84C6D849D8D1A /* EditPickupView.swift */,
 				5713CB29F2384C9FA528AA69 /* Components */,
 			);
 			path = Views;
@@ -212,6 +221,9 @@
 				B05854BE09514FED875FEAED /* LogPickupView.swift in Sources */,
 				E5E9C5A9E4F84093A0D9D57E /* SchoolBottleView.swift in Sources */,
 				6494310BEEEB4F328C4BE5D4 /* PersonCard.swift in Sources */,
+				7D7C3B2CF0794EBA87F73CBA /* EditPickupView.swift in Sources */,
+				21D3776C44D44E0EB71A342A /* EditMedicationView.swift in Sources */,
+				1C154E11E5FE46059F375992 /* EditPersonView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

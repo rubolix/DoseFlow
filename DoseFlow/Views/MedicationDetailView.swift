@@ -6,6 +6,8 @@ struct MedicationDetailView: View {
     let personName: String
     @State private var showingLogPickup = false
     @State private var showingSchoolTracker = false
+    @State private var showingEditMedication = false
+    @State private var editingPickup: Pickup?
     @State private var calendarAlert: CalendarAlertType?
 
     enum CalendarAlertType: Identifiable {
@@ -70,6 +72,13 @@ struct MedicationDetailView: View {
                     } label: {
                         Label("Update School Bottle", systemImage: "pencil")
                     }
+                    if medication.latestSchoolBottle != nil {
+                        Button(role: .destructive) {
+                            deleteLatestSchoolBottle()
+                        } label: {
+                            Label("Remove School Entry", systemImage: "trash")
+                        }
+                    }
                 } header: {
                     Text("School Supply")
                 }
@@ -88,25 +97,50 @@ struct MedicationDetailView: View {
             if !medication.pickups.isEmpty {
                 Section {
                     ForEach(medication.pickups.sorted(by: { $0.date > $1.date })) { pickup in
-                        HStack {
-                            Text(pickup.date.formatted(.dateTime.month(.abbreviated).day().year()))
-                            Spacer()
-                            Text("\(pickup.pillCount) pills")
-                                .foregroundStyle(.secondary)
+                        Button {
+                            editingPickup = pickup
+                        } label: {
+                            HStack {
+                                Text(pickup.date.formatted(.dateTime.month(.abbreviated).day().year()))
+                                    .foregroundStyle(.primary)
+                                Spacer()
+                                Text("\(pickup.pillCount) pills")
+                                    .foregroundStyle(.secondary)
+                                Image(systemName: "chevron.right")
+                                    .font(.caption2)
+                                    .foregroundStyle(.tertiary)
+                            }
                         }
                     }
                     .onDelete(perform: deletePickups)
                 } header: {
                     Text("Pickup History")
+                } footer: {
+                    Text("Tap to edit. Swipe left to delete.")
                 }
             }
         }
         .navigationTitle(medication.name)
+        .toolbar {
+            ToolbarItem(placement: .primaryAction) {
+                Button {
+                    showingEditMedication = true
+                } label: {
+                    Image(systemName: "pencil.circle")
+                }
+            }
+        }
         .sheet(isPresented: $showingLogPickup) {
             LogPickupView(medication: medication)
         }
         .sheet(isPresented: $showingSchoolTracker) {
             SchoolBottleView(medication: medication)
+        }
+        .sheet(isPresented: $showingEditMedication) {
+            EditMedicationView(medication: medication)
+        }
+        .sheet(item: $editingPickup) { pickup in
+            EditPickupView(pickup: pickup)
         }
         .alert(item: $calendarAlert) { alertType in
             switch alertType {
@@ -137,6 +171,12 @@ struct MedicationDetailView: View {
         let sorted = medication.pickups.sorted(by: { $0.date > $1.date })
         for index in offsets {
             modelContext.delete(sorted[index])
+        }
+    }
+
+    private func deleteLatestSchoolBottle() {
+        if let bottle = medication.latestSchoolBottle {
+            modelContext.delete(bottle)
         }
     }
 }
