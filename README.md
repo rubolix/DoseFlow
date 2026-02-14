@@ -45,6 +45,13 @@ When you're managing this for multiple family members, each with different medic
 - No accounts, no cloud, no data leaves your phone
 - Counts update automatically as days pass
 
+### 📦 Backup & Restore
+- Export all your data as a human-readable JSON file
+- Save backups to Files, AirDrop, email, or any share destination
+- Import from a previously exported backup to restore your data
+- Import is non-destructive — it adds data alongside what's already there
+- Access via the ⚙️ gear icon on the dashboard
+
 ## Screenshots
 
 *Coming soon — app is in active TestFlight testing.*
