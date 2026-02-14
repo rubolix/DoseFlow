@@ -57,7 +57,7 @@ struct DashboardView: View {
             Text("No family members yet")
                 .font(.title2)
                 .fontWeight(.medium)
-            Text("Tap + to add a person and start\ntracking their medications.")
+            Text("Tap the button above to add a person\nand start tracking their medications.")
                 .font(.subheadline)
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)

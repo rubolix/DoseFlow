@@ -13,7 +13,7 @@ struct PersonDetailView: View {
         List {
             if activeMedications.isEmpty && archivedMedications.isEmpty {
                 Section {
-                    Text("No medications yet. Tap + to add one.")
+                    Text("No medications yet. Tap ⋯ to add one.")
                         .foregroundStyle(.secondary)
                 } header: {
                     Text("Medications")
