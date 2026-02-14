@@ -11,20 +11,39 @@ struct PersonDetailView: View {
 
     var body: some View {
         List {
-            Section {
-                if person.medications.isEmpty {
+            if activeMedications.isEmpty && archivedMedications.isEmpty {
+                Section {
                     Text("No medications yet. Tap + to add one.")
                         .foregroundStyle(.secondary)
-                } else {
-                    ForEach(sortedMedications) { med in
+                } header: {
+                    Text("Medications")
+                }
+            }
+
+            if !activeMedications.isEmpty {
+                Section {
+                    ForEach(activeMedications) { med in
                         NavigationLink(destination: MedicationDetailView(medication: med, personName: person.name)) {
                             MedicationListRow(medication: med)
                         }
                     }
-                    .onDelete(perform: deleteMedications)
+                    .onDelete(perform: deleteActiveMedications)
+                } header: {
+                    Text("Active Medications")
                 }
-            } header: {
-                Text("Medications")
+            }
+
+            if !archivedMedications.isEmpty {
+                Section {
+                    ForEach(archivedMedications) { med in
+                        NavigationLink(destination: MedicationDetailView(medication: med, personName: person.name)) {
+                            MedicationListRow(medication: med)
+                        }
+                    }
+                    .onDelete(perform: deleteArchivedMedications)
+                } header: {
+                    Text("Archived")
+                }
             }
         }
         .navigationTitle(person.name)
@@ -63,14 +82,23 @@ struct PersonDetailView: View {
         }
     }
 
-    private var sortedMedications: [Medication] {
-        person.medications.sorted { $0.daysRemaining < $1.daysRemaining }
+    private var activeMedications: [Medication] {
+        person.medications.filter { !$0.isArchived }.sorted { $0.daysRemaining < $1.daysRemaining }
     }
 
-    private func deleteMedications(at offsets: IndexSet) {
+    private var archivedMedications: [Medication] {
+        person.medications.filter { $0.isArchived }.sorted { $0.name < $1.name }
+    }
+
+    private func deleteActiveMedications(at offsets: IndexSet) {
         for index in offsets {
-            let med = sortedMedications[index]
-            modelContext.delete(med)
+            modelContext.delete(activeMedications[index])
+        }
+    }
+
+    private func deleteArchivedMedications(at offsets: IndexSet) {
+        for index in offsets {
+            modelContext.delete(archivedMedications[index])
         }
     }
 }
@@ -83,13 +111,23 @@ struct MedicationListRow: View {
             HStack {
                 Text(medication.name)
                     .font(.headline)
+                    .foregroundStyle(medication.isArchived ? .secondary : .primary)
+                if medication.isArchived {
+                    Text("PAUSED")
+                        .font(.caption2)
+                        .fontWeight(.bold)
+                        .padding(.horizontal, 6)
+                        .padding(.vertical, 2)
+                        .background(.gray.opacity(0.2), in: Capsule())
+                        .foregroundStyle(.secondary)
+                }
                 if medication.isSchoolTracked {
                     Image(systemName: "building.2")
                         .font(.caption)
                         .foregroundStyle(.blue)
                 }
                 Spacer()
-                if medication.latestPickup != nil {
+                if medication.latestPickup != nil && !medication.isArchived {
                     urgencyBadge
                 }
             }

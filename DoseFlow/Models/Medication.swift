@@ -7,6 +7,8 @@ final class Medication {
     var dosage: String
     var pillsPerDay: Int
     var isSchoolTracked: Bool
+    var isArchived: Bool
+    var archivedDate: Date?
     var person: Person?
 
     @Relationship(deleteRule: .cascade, inverse: \Pickup.medication)
@@ -20,6 +22,8 @@ final class Medication {
         self.dosage = dosage
         self.pillsPerDay = pillsPerDay
         self.isSchoolTracked = isSchoolTracked
+        self.isArchived = false
+        self.archivedDate = nil
     }
 
     /// Most recent pickup
@@ -30,7 +34,8 @@ final class Medication {
     /// Pills remaining based on latest pickup
     var pillsRemaining: Int {
         guard let pickup = latestPickup else { return 0 }
-        let daysSincePickup = Calendar.current.dateComponents([.day], from: pickup.date, to: Date()).day ?? 0
+        let endDate = isArchived ? (archivedDate ?? Date()) : Date()
+        let daysSincePickup = Calendar.current.dateComponents([.day], from: pickup.date, to: endDate).day ?? 0
         let consumed = daysSincePickup * pillsPerDay
         return max(0, pickup.pillCount - consumed)
     }
@@ -38,6 +43,7 @@ final class Medication {
     /// Date when pills will run out
     var runOutDate: Date? {
         guard let pickup = latestPickup, pillsPerDay > 0 else { return nil }
+        if isArchived { return nil }
         let totalDays = pickup.pillCount / pillsPerDay
         return Calendar.current.date(byAdding: .day, value: totalDays, to: pickup.date)
     }
@@ -56,7 +62,7 @@ final class Medication {
 
     /// Days until pills run out
     var daysRemaining: Int {
-        guard let runOut = runOutDate else { return 0 }
+        guard let runOut = runOutDate else { return isArchived ? pillsRemaining : 0 }
         let days = Calendar.current.dateComponents([.day], from: Date(), to: runOut).day ?? 0
         return max(0, days)
     }

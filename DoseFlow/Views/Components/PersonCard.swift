@@ -12,17 +12,26 @@ struct PersonCard: View {
                 Text(person.name)
                     .font(.headline)
                 Spacer()
-                Text("\(person.medications.count) meds")
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
+                let active = person.medications.filter { !$0.isArchived }
+                let archived = person.medications.filter { $0.isArchived }
+                if !archived.isEmpty {
+                    Text("\(active.count) active, \(archived.count) archived")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                } else {
+                    Text("\(active.count) meds")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
             }
 
-            if person.medications.isEmpty {
-                Text("No medications added")
+            let activeMeds = person.medications.filter { !$0.isArchived }
+            if activeMeds.isEmpty {
+                Text("No active medications")
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
             } else {
-                ForEach(person.medications.sorted(by: { $0.daysRemaining < $1.daysRemaining })) { med in
+                ForEach(activeMeds.sorted(by: { $0.daysRemaining < $1.daysRemaining })) { med in
                     MedicationRow(medication: med)
                 }
             }

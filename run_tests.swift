@@ -48,24 +48,34 @@ struct SPSCalendar {
 }
 
 // Medication logic (simplified for testing)
-func pillsRemaining(pickupDate: Date, pillCount: Int, pillsPerDay: Int) -> Int {
-    let days = Calendar.current.dateComponents([.day], from: pickupDate, to: Date()).day ?? 0
+func pillsRemaining(pickupDate: Date, pillCount: Int, pillsPerDay: Int, isArchived: Bool = false, archivedDate: Date? = nil) -> Int {
+    let endDate = isArchived ? (archivedDate ?? Date()) : Date()
+    let days = Calendar.current.dateComponents([.day], from: pickupDate, to: endDate).day ?? 0
     return max(0, pillCount - (days * pillsPerDay))
 }
 
-func runOutDate(pickupDate: Date, pillCount: Int, pillsPerDay: Int) -> Date {
+func runOutDate(pickupDate: Date, pillCount: Int, pillsPerDay: Int, isArchived: Bool = false) -> Date? {
+    if isArchived { return nil }
     let totalDays = pillCount / pillsPerDay
     return Calendar.current.date(byAdding: .day, value: totalDays, to: pickupDate)!
 }
 
-func orderDate(pickupDate: Date, pillCount: Int, pillsPerDay: Int) -> Date {
-    let ro = runOutDate(pickupDate: pickupDate, pillCount: pillCount, pillsPerDay: pillsPerDay)
+func orderDate(pickupDate: Date, pillCount: Int, pillsPerDay: Int, isArchived: Bool = false) -> Date? {
+    guard let ro = runOutDate(pickupDate: pickupDate, pillCount: pillCount, pillsPerDay: pillsPerDay, isArchived: isArchived) else { return nil }
     return Calendar.current.date(byAdding: .day, value: -7, to: ro)!
 }
 
-func earliestPickupDate(pickupDate: Date, pillCount: Int, pillsPerDay: Int) -> Date {
-    let ro = runOutDate(pickupDate: pickupDate, pillCount: pillCount, pillsPerDay: pillsPerDay)
+func earliestPickupDate(pickupDate: Date, pillCount: Int, pillsPerDay: Int, isArchived: Bool = false) -> Date? {
+    guard let ro = runOutDate(pickupDate: pickupDate, pillCount: pillCount, pillsPerDay: pillsPerDay, isArchived: isArchived) else { return nil }
     return Calendar.current.date(byAdding: .day, value: -4, to: ro)!
+}
+
+func daysRemaining(pickupDate: Date, pillCount: Int, pillsPerDay: Int, isArchived: Bool = false, archivedDate: Date? = nil) -> Int {
+    guard let ro = runOutDate(pickupDate: pickupDate, pillCount: pillCount, pillsPerDay: pillsPerDay, isArchived: isArchived) else {
+        return isArchived ? pillsRemaining(pickupDate: pickupDate, pillCount: pillCount, pillsPerDay: pillsPerDay, isArchived: isArchived, archivedDate: archivedDate) : 0
+    }
+    let days = Calendar.current.dateComponents([.day], from: Date(), to: ro).day ?? 0
+    return max(0, days)
 }
 
 func schoolDaysFromDate(_ startDate: Date, count: Int, calendar: SPSCalendar) -> Date {
@@ -143,6 +153,78 @@ assert(earliestPickupDate(pickupDate: today, pillCount: 30, pillsPerDay: 1) == e
 let expectedRunOut90 = cal.date(byAdding: .day, value: 90, to: today)!
 assert(runOutDate(pickupDate: today, pillCount: 90, pillsPerDay: 1) == expectedRunOut90,
        "90 pills → runs out in 90 days")
+
+// ============================================================
+print("\n🔒 ARCHIVE FEATURE TESTS")
+print("=" * 50)
+
+// Test: archived medication — pills freeze at archive date
+let thirtyDaysAgo = cal.date(byAdding: .day, value: -30, to: Date())!
+let twentyDaysAgo = cal.date(byAdding: .day, value: -20, to: Date())!
+let frozenPills = pillsRemaining(pickupDate: thirtyDaysAgo, pillCount: 60, pillsPerDay: 1, isArchived: true, archivedDate: twentyDaysAgo)
+assert(frozenPills == 50,
+       "Archived: 60 pills, picked up 30d ago, archived 20d ago → frozen at 50")
+
+// Test: archived medication — pills freeze, not today's count
+let activePills = pillsRemaining(pickupDate: thirtyDaysAgo, pillCount: 60, pillsPerDay: 1, isArchived: false)
+assert(activePills == 30,
+       "Active: 60 pills, picked up 30d ago → 30 remaining (uses today)")
+assert(frozenPills != activePills,
+       "Archived count differs from active count (frozen vs live)")
+
+// Test: archived medication — run out date returns nil
+assert(runOutDate(pickupDate: today, pillCount: 30, pillsPerDay: 1, isArchived: true) == nil,
+       "Archived: runOutDate returns nil")
+
+// Test: active medication — run out date returns a value
+assert(runOutDate(pickupDate: today, pillCount: 30, pillsPerDay: 1, isArchived: false) != nil,
+       "Active: runOutDate returns a date")
+
+// Test: archived medication — order date returns nil
+assert(orderDate(pickupDate: today, pillCount: 30, pillsPerDay: 1, isArchived: true) == nil,
+       "Archived: orderDate returns nil")
+
+// Test: active medication — order date returns a value
+assert(orderDate(pickupDate: today, pillCount: 30, pillsPerDay: 1, isArchived: false) != nil,
+       "Active: orderDate returns a date")
+
+// Test: archived medication — earliest pickup date returns nil
+assert(earliestPickupDate(pickupDate: today, pillCount: 30, pillsPerDay: 1, isArchived: true) == nil,
+       "Archived: earliestPickupDate returns nil")
+
+// Test: active medication — earliest pickup date returns a value
+assert(earliestPickupDate(pickupDate: today, pillCount: 30, pillsPerDay: 1, isArchived: false) != nil,
+       "Active: earliestPickupDate returns a date")
+
+// Test: archived — pills frozen at 0 if archived after all pills consumed
+let longAgo = cal.date(byAdding: .day, value: -100, to: Date())!
+let archivedAfterEmpty = cal.date(byAdding: .day, value: -50, to: Date())!
+assert(pillsRemaining(pickupDate: longAgo, pillCount: 30, pillsPerDay: 1, isArchived: true, archivedDate: archivedAfterEmpty) == 0,
+       "Archived after all consumed → frozen at 0")
+
+// Test: archived same day as pickup — full count preserved
+assert(pillsRemaining(pickupDate: thirtyDaysAgo, pillCount: 60, pillsPerDay: 1, isArchived: true, archivedDate: thirtyDaysAgo) == 60,
+       "Archived same day as pickup → full 60 pills frozen")
+
+// Test: daysRemaining returns frozen pill count when archived (no run-out date)
+let archivedDays = daysRemaining(pickupDate: thirtyDaysAgo, pillCount: 60, pillsPerDay: 1, isArchived: true, archivedDate: twentyDaysAgo)
+assert(archivedDays == 50,
+       "Archived daysRemaining returns frozen pill count (50)")
+
+// Test: unarchive restores normal behavior — simulated by isArchived=false
+let unarchived = pillsRemaining(pickupDate: thirtyDaysAgo, pillCount: 60, pillsPerDay: 1, isArchived: false)
+assert(unarchived == 30,
+       "Unarchived: resumes normal calculation (30 remaining)")
+
+// Test: archive with 2 pills/day
+let twoPillsFrozen = pillsRemaining(pickupDate: thirtyDaysAgo, pillCount: 60, pillsPerDay: 2, isArchived: true, archivedDate: twentyDaysAgo)
+assert(twoPillsFrozen == 40,
+       "Archived: 60 pills, 2/day, picked up 30d ago, archived 20d ago → frozen at 40")
+
+// Test: active same scenario with 2 pills/day
+let twoPillsActive = pillsRemaining(pickupDate: thirtyDaysAgo, pillCount: 60, pillsPerDay: 2, isArchived: false)
+assert(twoPillsActive == 0,
+       "Active: 60 pills, 2/day, 30 days → 0 remaining")
 
 // ============================================================
 print("\n🏫 SPS CALENDAR TESTS")

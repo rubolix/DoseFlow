@@ -17,10 +17,36 @@ struct MedicationDetailView: View {
 
     var body: some View {
         List {
+            // Archived banner
+            if medication.isArchived {
+                Section {
+                    HStack {
+                        Image(systemName: "pause.circle.fill")
+                            .foregroundStyle(.orange)
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text("Medication Paused")
+                                .font(.subheadline)
+                                .fontWeight(.semibold)
+                            Text("Pill count is frozen. Unarchive to resume tracking.")
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                        }
+                        Spacer()
+                        Button("Unarchive") {
+                            medication.isArchived = false
+                            medication.archivedDate = nil
+                        }
+                        .buttonStyle(.bordered)
+                        .tint(.blue)
+                    }
+                }
+            }
+
             // Status section
             Section {
                 if let _ = medication.latestPickup {
                     StatusRow(label: "Pills Remaining", value: "\(medication.pillsRemaining)", icon: "pills.fill")
+                    if !medication.isArchived {
                     StatusRow(label: "Days Remaining", value: "\(medication.daysRemaining)", icon: "clock.fill",
                               color: medication.daysRemaining <= 4 ? .red : medication.daysRemaining <= 7 ? .orange : .green)
 
@@ -32,6 +58,7 @@ struct MedicationDetailView: View {
                     }
                     if let pickup = medication.earliestPickupDate {
                         StatusRow(label: "Can Pick Up", value: pickup.formatted(.dateTime.month(.abbreviated).day().year()), icon: "bag.fill", color: .blue)
+                    }
                     }
                 } else {
                     Text("No pickup logged yet")
@@ -123,10 +150,27 @@ struct MedicationDetailView: View {
         .navigationTitle(medication.name)
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
-                Button {
-                    showingEditMedication = true
+                Menu {
+                    Button { showingEditMedication = true } label: {
+                        Label("Edit Medication", systemImage: "pencil")
+                    }
+                    Button {
+                        if medication.isArchived {
+                            medication.isArchived = false
+                            medication.archivedDate = nil
+                        } else {
+                            medication.isArchived = true
+                            medication.archivedDate = Date()
+                        }
+                    } label: {
+                        if medication.isArchived {
+                            Label("Unarchive", systemImage: "arrow.uturn.backward")
+                        } else {
+                            Label("Archive", systemImage: "archivebox")
+                        }
+                    }
                 } label: {
-                    Image(systemName: "pencil.circle")
+                    Image(systemName: "ellipsis.circle")
                 }
             }
         }
