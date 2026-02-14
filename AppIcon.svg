@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9B82B8"/>
+      <stop offset="100%" stop-color="#6F5591"/>
+    </linearGradient>
+    <linearGradient id="pill-top" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#EDE6F4"/>
+    </linearGradient>
+    <linearGradient id="pill-bot" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#C9AEE0"/>
+      <stop offset="100%" stop-color="#A682C4"/>
+    </linearGradient>
+    <linearGradient id="shine" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-10%" width="140%" height="140%">
+      <feDropShadow dx="4" dy="10" stdDeviation="18" flood-color="#3D2660" flood-opacity="0.4"/>
+    </filter>
+    <clipPath id="pill-clip">
+      <rect x="-60" y="-170" width="120" height="340" rx="60"/>
+    </clipPath>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1024" height="1024" fill="url(#bg)"/>
+
+  <!-- Subtle wave bands -->
+  <path d="M0 600 Q200 530 400 580 Q600 630 800 560 Q900 530 1024 570 L1024 640 Q900 600 800 630 Q600 700 400 650 Q200 600 0 670Z" fill="white" opacity="0.07"/>
+  <path d="M0 660 Q250 600 500 650 Q750 700 1024 630 L1024 700 Q750 770 500 720 Q250 670 0 730Z" fill="white" opacity="0.05"/>
+
+  <!-- Capsule group (rotated) -->
+  <g transform="translate(490, 400) rotate(-28)" filter="url(#shadow)">
+    <!-- Full capsule body outline -->
+    <rect x="-60" y="-170" width="120" height="340" rx="60" fill="url(#pill-bot)"/>
+    <!-- Top half overlay (white) -->
+    <clipPath id="top-half">
+      <rect x="-65" y="-175" width="130" height="178"/>
+    </clipPath>
+    <rect x="-60" y="-170" width="120" height="340" rx="60" fill="url(#pill-top)" clip-path="url(#top-half)"/>
+    <!-- Seam line -->
+    <line x1="-60" y1="2" x2="60" y2="2" stroke="#B89AD0" stroke-width="1.5" opacity="0.4"/>
+    <!-- Shine reflection -->
+    <rect x="-60" y="-170" width="50" height="340" rx="60" clip-path="url(#pill-clip)" fill="url(#shine)"/>
+  </g>
+
+  <!-- Flow line + dots -->
+  <path d="M240 680 C350 640, 460 700, 560 660 S740 650, 790 670" stroke="white" stroke-width="3.5" fill="none" opacity="0.35" stroke-linecap="round"/>
+  <path d="M280 720 C380 685, 480 740, 570 705 S720 700, 760 715" stroke="white" stroke-width="2.5" fill="none" opacity="0.2" stroke-linecap="round"/>
+  <circle cx="680" cy="640" r="8" fill="white" opacity="0.45"/>
+  <circle cx="720" cy="660" r="5.5" fill="white" opacity="0.3"/>
+  <circle cx="750" cy="680" r="3.5" fill="white" opacity="0.18"/>
+</svg>
