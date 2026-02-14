@@ -29,6 +29,11 @@ struct DashboardView: View {
             .background(Color(.systemGroupedBackground))
             .navigationTitle("DoseFlow")
             .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    NavigationLink(destination: DataSettingsView()) {
+                        Image(systemName: "gearshape")
+                    }
+                }
                 ToolbarItem(placement: .primaryAction) {
                     Button {
                         showingAddPerson = true

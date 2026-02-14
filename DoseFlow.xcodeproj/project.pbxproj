@@ -7,51 +7,55 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		929F7009B82A40EDA73B2771 /* DoseFlowApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1452E5897BF429E8B5FC461 /* DoseFlowApp.swift */; };
-		4FD4AE12C8EF4DAA8389DF77 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C551B59F5D043F0B64D6B5F /* Person.swift */; };
+		0426C21AB31E41459C6665EB /* AddPersonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AC89D313934F31868C38A5 /* AddPersonView.swift */; };
+		114FF566F6BD4CDDA607C998 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 927B6BDA3CA94E4E8FD33B35 /* Assets.xcassets */; };
+		1C154E11E5FE46059F375992 /* EditPersonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D07885332AB4A3C9FFAC931 /* EditPersonView.swift */; };
+		21D3776C44D44E0EB71A342A /* EditMedicationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F179FC0327804BB9A7F75E6B /* EditMedicationView.swift */; };
+		349C0FADD7BC423F8389B979 /* MedicationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C11C81BAD3D46479EBBF3BE /* MedicationDetailView.swift */; };
 		3B597EBE2683428D8524AD20 /* Medication.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89AD784B8AF450CAB6D5E06 /* Medication.swift */; };
-		ECBACDF1FD2441508D8BA577 /* Pickup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12A8BD53CE04F4CA2D5F8F4 /* Pickup.swift */; };
-		E323AB5A59B2428F8F44BD1E /* SchoolBottle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B47862089E4B6A92C026A9 /* SchoolBottle.swift */; };
-		717651216FA646A2AADE5037 /* SPSCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0EBB4E460E441DAF5BF3ED /* SPSCalendar.swift */; };
-		F03696CCC96D42E08D1CBA4A /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A764A7C9994AF5870B077F /* CalendarManager.swift */; };
 		482A1FF13AA64629A2A30113 /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A44E71DB88245C7A5283FC2 /* ColorExtensions.swift */; };
 		484B385567984162B912CEC5 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3312A07C2ECB4F26B873415E /* DashboardView.swift */; };
-		90A3634A5B32480A9AB31974 /* PersonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F10BBDB48FD4966A4788950 /* PersonDetailView.swift */; };
-		349C0FADD7BC423F8389B979 /* MedicationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C11C81BAD3D46479EBBF3BE /* MedicationDetailView.swift */; };
-		0426C21AB31E41459C6665EB /* AddPersonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AC89D313934F31868C38A5 /* AddPersonView.swift */; };
-		82174320F5224F379CE70F82 /* AddMedicationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F66B3B019544D88B67FCCC7 /* AddMedicationView.swift */; };
-		B05854BE09514FED875FEAED /* LogPickupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41BAC0F3BAF4DD198C32319 /* LogPickupView.swift */; };
-		E5E9C5A9E4F84093A0D9D57E /* SchoolBottleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D4DE17C82F4EEEA2FBE765 /* SchoolBottleView.swift */; };
+		4FD4AE12C8EF4DAA8389DF77 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C551B59F5D043F0B64D6B5F /* Person.swift */; };
 		6494310BEEEB4F328C4BE5D4 /* PersonCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0DF70FC64840D48DB19EB6 /* PersonCard.swift */; };
-		114FF566F6BD4CDDA607C998 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 927B6BDA3CA94E4E8FD33B35 /* Assets.xcassets */; };
+		717651216FA646A2AADE5037 /* SPSCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0EBB4E460E441DAF5BF3ED /* SPSCalendar.swift */; };
 		7D7C3B2CF0794EBA87F73CBA /* EditPickupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E63826B3E84C6D849D8D1A /* EditPickupView.swift */; };
-		21D3776C44D44E0EB71A342A /* EditMedicationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F179FC0327804BB9A7F75E6B /* EditMedicationView.swift */; };
-		1C154E11E5FE46059F375992 /* EditPersonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D07885332AB4A3C9FFAC931 /* EditPersonView.swift */; };
+		82174320F5224F379CE70F82 /* AddMedicationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F66B3B019544D88B67FCCC7 /* AddMedicationView.swift */; };
+		90A3634A5B32480A9AB31974 /* PersonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F10BBDB48FD4966A4788950 /* PersonDetailView.swift */; };
+		929F7009B82A40EDA73B2771 /* DoseFlowApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1452E5897BF429E8B5FC461 /* DoseFlowApp.swift */; };
+		B05854BE09514FED875FEAED /* LogPickupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41BAC0F3BAF4DD198C32319 /* LogPickupView.swift */; };
+		E323AB5A59B2428F8F44BD1E /* SchoolBottle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B47862089E4B6A92C026A9 /* SchoolBottle.swift */; };
+		E5E9C5A9E4F84093A0D9D57E /* SchoolBottleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D4DE17C82F4EEEA2FBE765 /* SchoolBottleView.swift */; };
+		ECBACDF1FD2441508D8BA577 /* Pickup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12A8BD53CE04F4CA2D5F8F4 /* Pickup.swift */; };
+		F03696CCC96D42E08D1CBA4A /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A764A7C9994AF5870B077F /* CalendarManager.swift */; };
+		F2E1D0C9B8A7F6E5D4C3B2A1 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F6A7B8C9D0E1F2 /* DataManager.swift */; };
+		A4F3E2D1C0B9A8F7E6D5C4B3 /* DataSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C4D5E6F7A8B9C0D1E2F3A4 /* DataSettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		B1452E5897BF429E8B5FC461 /* DoseFlowApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DoseFlowApp.swift"; sourceTree = "<group>"; };
-		6C551B59F5D043F0B64D6B5F /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Person.swift"; sourceTree = "<group>"; };
-		C89AD784B8AF450CAB6D5E06 /* Medication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Medication.swift"; sourceTree = "<group>"; };
-		D12A8BD53CE04F4CA2D5F8F4 /* Pickup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Pickup.swift"; sourceTree = "<group>"; };
-		90B47862089E4B6A92C026A9 /* SchoolBottle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SchoolBottle.swift"; sourceTree = "<group>"; };
-		3A0EBB4E460E441DAF5BF3ED /* SPSCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SPSCalendar.swift"; sourceTree = "<group>"; };
-		47A764A7C9994AF5870B077F /* CalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CalendarManager.swift"; sourceTree = "<group>"; };
-		2A44E71DB88245C7A5283FC2 /* ColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ColorExtensions.swift"; sourceTree = "<group>"; };
-		3312A07C2ECB4F26B873415E /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DashboardView.swift"; sourceTree = "<group>"; };
-		9F10BBDB48FD4966A4788950 /* PersonDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PersonDetailView.swift"; sourceTree = "<group>"; };
-		1C11C81BAD3D46479EBBF3BE /* MedicationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MedicationDetailView.swift"; sourceTree = "<group>"; };
-		02AC89D313934F31868C38A5 /* AddPersonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddPersonView.swift"; sourceTree = "<group>"; };
-		6F66B3B019544D88B67FCCC7 /* AddMedicationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddMedicationView.swift"; sourceTree = "<group>"; };
-		A41BAC0F3BAF4DD198C32319 /* LogPickupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LogPickupView.swift"; sourceTree = "<group>"; };
-		C3D4DE17C82F4EEEA2FBE765 /* SchoolBottleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SchoolBottleView.swift"; sourceTree = "<group>"; };
-		AD0DF70FC64840D48DB19EB6 /* PersonCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PersonCard.swift"; sourceTree = "<group>"; };
-		F1D3A858CBA842288251028D /* DoseFlow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoseFlow.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		02AC89D313934F31868C38A5 /* AddPersonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPersonView.swift; sourceTree = "<group>"; };
+		1C11C81BAD3D46479EBBF3BE /* MedicationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationDetailView.swift; sourceTree = "<group>"; };
+		2A44E71DB88245C7A5283FC2 /* ColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtensions.swift; sourceTree = "<group>"; };
+		3312A07C2ECB4F26B873415E /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		3A0EBB4E460E441DAF5BF3ED /* SPSCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPSCalendar.swift; sourceTree = "<group>"; };
+		47A764A7C9994AF5870B077F /* CalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
 		4C2C4EC4669B40ABBC655406 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4D07885332AB4A3C9FFAC931 /* EditPersonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPersonView.swift; sourceTree = "<group>"; };
+		6C551B59F5D043F0B64D6B5F /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		6F66B3B019544D88B67FCCC7 /* AddMedicationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMedicationView.swift; sourceTree = "<group>"; };
+		90B47862089E4B6A92C026A9 /* SchoolBottle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolBottle.swift; sourceTree = "<group>"; };
 		927B6BDA3CA94E4E8FD33B35 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		D7E63826B3E84C6D849D8D1A /* EditPickupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditPickupView.swift"; sourceTree = "<group>"; };
-		F179FC0327804BB9A7F75E6B /* EditMedicationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditMedicationView.swift"; sourceTree = "<group>"; };
-		4D07885332AB4A3C9FFAC931 /* EditPersonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditPersonView.swift"; sourceTree = "<group>"; };
+		9F10BBDB48FD4966A4788950 /* PersonDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailView.swift; sourceTree = "<group>"; };
+		A41BAC0F3BAF4DD198C32319 /* LogPickupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogPickupView.swift; sourceTree = "<group>"; };
+		AD0DF70FC64840D48DB19EB6 /* PersonCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCard.swift; sourceTree = "<group>"; };
+		B1452E5897BF429E8B5FC461 /* DoseFlowApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoseFlowApp.swift; sourceTree = "<group>"; };
+		C3D4DE17C82F4EEEA2FBE765 /* SchoolBottleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolBottleView.swift; sourceTree = "<group>"; };
+		C89AD784B8AF450CAB6D5E06 /* Medication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Medication.swift; sourceTree = "<group>"; };
+		D12A8BD53CE04F4CA2D5F8F4 /* Pickup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pickup.swift; sourceTree = "<group>"; };
+		D7E63826B3E84C6D849D8D1A /* EditPickupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPickupView.swift; sourceTree = "<group>"; };
+		F179FC0327804BB9A7F75E6B /* EditMedicationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMedicationView.swift; sourceTree = "<group>"; };
+		A1B2C3D4E5F6A7B8C9D0E1F2 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		B3C4D5E6F7A8B9C0D1E2F3A4 /* DataSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSettingsView.swift; sourceTree = "<group>"; };
+		F1D3A858CBA842288251028D /* DoseFlow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoseFlow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +69,44 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		268F7775054E4BEB97C1FEEC /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				3A0EBB4E460E441DAF5BF3ED /* SPSCalendar.swift */,
+				47A764A7C9994AF5870B077F /* CalendarManager.swift */,
+				2A44E71DB88245C7A5283FC2 /* ColorExtensions.swift */,
+				A1B2C3D4E5F6A7B8C9D0E1F2 /* DataManager.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		5713CB29F2384C9FA528AA69 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				AD0DF70FC64840D48DB19EB6 /* PersonCard.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		84837E92FC884A36A7599E33 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3312A07C2ECB4F26B873415E /* DashboardView.swift */,
+				9F10BBDB48FD4966A4788950 /* PersonDetailView.swift */,
+				1C11C81BAD3D46479EBBF3BE /* MedicationDetailView.swift */,
+				02AC89D313934F31868C38A5 /* AddPersonView.swift */,
+				6F66B3B019544D88B67FCCC7 /* AddMedicationView.swift */,
+				A41BAC0F3BAF4DD198C32319 /* LogPickupView.swift */,
+				C3D4DE17C82F4EEEA2FBE765 /* SchoolBottleView.swift */,
+				4D07885332AB4A3C9FFAC931 /* EditPersonView.swift */,
+				F179FC0327804BB9A7F75E6B /* EditMedicationView.swift */,
+				D7E63826B3E84C6D849D8D1A /* EditPickupView.swift */,
+				B3C4D5E6F7A8B9C0D1E2F3A4 /* DataSettingsView.swift */,
+				5713CB29F2384C9FA528AA69 /* Components */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		94E904485BEB4EE4AE8B530A = {
 			isa = PBXGroup;
 			children = (
@@ -81,19 +123,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		E6A93522438646049EA54440 /* DoseFlow */ = {
-			isa = PBXGroup;
-			children = (
-				B1452E5897BF429E8B5FC461 /* DoseFlowApp.swift */,
-				9C93649EF05B43688A8B4A67 /* Models */,
-				84837E92FC884A36A7599E33 /* Views */,
-				268F7775054E4BEB97C1FEEC /* Utilities */,
-				927B6BDA3CA94E4E8FD33B35 /* Assets.xcassets */,
-				4C2C4EC4669B40ABBC655406 /* Info.plist */,
-			);
-			path = DoseFlow;
-			sourceTree = "<group>";
-		};
 		9C93649EF05B43688A8B4A67 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -105,40 +134,17 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		84837E92FC884A36A7599E33 /* Views */ = {
+		E6A93522438646049EA54440 /* DoseFlow */ = {
 			isa = PBXGroup;
 			children = (
-				3312A07C2ECB4F26B873415E /* DashboardView.swift */,
-				9F10BBDB48FD4966A4788950 /* PersonDetailView.swift */,
-				1C11C81BAD3D46479EBBF3BE /* MedicationDetailView.swift */,
-				02AC89D313934F31868C38A5 /* AddPersonView.swift */,
-				6F66B3B019544D88B67FCCC7 /* AddMedicationView.swift */,
-				A41BAC0F3BAF4DD198C32319 /* LogPickupView.swift */,
-				C3D4DE17C82F4EEEA2FBE765 /* SchoolBottleView.swift */,
-				4D07885332AB4A3C9FFAC931 /* EditPersonView.swift */,
-				F179FC0327804BB9A7F75E6B /* EditMedicationView.swift */,
-				D7E63826B3E84C6D849D8D1A /* EditPickupView.swift */,
-				5713CB29F2384C9FA528AA69 /* Components */,
+				B1452E5897BF429E8B5FC461 /* DoseFlowApp.swift */,
+				9C93649EF05B43688A8B4A67 /* Models */,
+				84837E92FC884A36A7599E33 /* Views */,
+				268F7775054E4BEB97C1FEEC /* Utilities */,
+				927B6BDA3CA94E4E8FD33B35 /* Assets.xcassets */,
+				4C2C4EC4669B40ABBC655406 /* Info.plist */,
 			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		5713CB29F2384C9FA528AA69 /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				AD0DF70FC64840D48DB19EB6 /* PersonCard.swift */,
-			);
-			path = Components;
-			sourceTree = "<group>";
-		};
-		268F7775054E4BEB97C1FEEC /* Utilities */ = {
-			isa = PBXGroup;
-			children = (
-				3A0EBB4E460E441DAF5BF3ED /* SPSCalendar.swift */,
-				47A764A7C9994AF5870B077F /* CalendarManager.swift */,
-				2A44E71DB88245C7A5283FC2 /* ColorExtensions.swift */,
-			);
-			path = Utilities;
+			path = DoseFlow;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -224,33 +230,42 @@
 				7D7C3B2CF0794EBA87F73CBA /* EditPickupView.swift in Sources */,
 				21D3776C44D44E0EB71A342A /* EditMedicationView.swift in Sources */,
 				1C154E11E5FE46059F375992 /* EditPersonView.swift in Sources */,
+				F2E1D0C9B8A7F6E5D4C3B2A1 /* DataManager.swift in Sources */,
+				A4F3E2D1C0B9A8F7E6D5C4B3 /* DataSettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		E9D97B828BF8405C97A14069 /* Debug */ = {
+		0985C44265464F2AAA43274A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ENABLE_MODULES = YES;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6NP9249SPC;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DoseFlow/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
+					"@executable_path/Frameworks",
 				);
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rubolix.DoseFlow;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
-			name = Debug;
+			name = Release;
 		};
 		5D681862D725442580F8D5B3 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -275,7 +290,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 6NP9249SPC;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DoseFlow/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -297,34 +312,27 @@
 			};
 			name = Debug;
 		};
-		0985C44265464F2AAA43274A /* Release */ = {
+		E9D97B828BF8405C97A14069 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = DoseFlow/Info.plist;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				LD_RUNPATH_SEARCH_PATHS = (
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
 					"$(inherited)",
-					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.rubolix.DoseFlow;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
-			name = Release;
+			name = Debug;
 		};
 /* End XCBuildConfiguration section */
 
@@ -348,7 +356,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
 	};
 	rootObject = A732CE9B928A4BD9B144B083 /* Project object */;
 }
