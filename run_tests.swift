@@ -49,15 +49,19 @@ struct SPSCalendar {
 
 // Medication logic (simplified for testing)
 func pillsRemaining(pickupDate: Date, pillCount: Int, pillsPerDay: Int, isArchived: Bool = false, archivedDate: Date? = nil) -> Int {
-    let endDate = isArchived ? (archivedDate ?? Date()) : Date()
-    let days = Calendar.current.dateComponents([.day], from: pickupDate, to: endDate).day ?? 0
+    let cal = Calendar.current
+    let pickupDay = cal.startOfDay(for: pickupDate)
+    let endDay = cal.startOfDay(for: isArchived ? (archivedDate ?? Date()) : Date())
+    let days = cal.dateComponents([.day], from: pickupDay, to: endDay).day ?? 0
     return max(0, pillCount - (days * pillsPerDay))
 }
 
 func runOutDate(pickupDate: Date, pillCount: Int, pillsPerDay: Int, isArchived: Bool = false) -> Date? {
     if isArchived { return nil }
+    let cal = Calendar.current
+    let pickupDay = cal.startOfDay(for: pickupDate)
     let totalDays = pillCount / pillsPerDay
-    return Calendar.current.date(byAdding: .day, value: totalDays, to: pickupDate)!
+    return cal.date(byAdding: .day, value: totalDays, to: pickupDay)!
 }
 
 func orderDate(pickupDate: Date, pillCount: Int, pillsPerDay: Int, isArchived: Bool = false) -> Date? {
@@ -74,7 +78,8 @@ func daysRemaining(pickupDate: Date, pillCount: Int, pillsPerDay: Int, isArchive
     guard let ro = runOutDate(pickupDate: pickupDate, pillCount: pillCount, pillsPerDay: pillsPerDay, isArchived: isArchived) else {
         return isArchived ? pillsRemaining(pickupDate: pickupDate, pillCount: pillCount, pillsPerDay: pillsPerDay, isArchived: isArchived, archivedDate: archivedDate) : 0
     }
-    let days = Calendar.current.dateComponents([.day], from: Date(), to: ro).day ?? 0
+    let today = Calendar.current.startOfDay(for: Date())
+    let days = Calendar.current.dateComponents([.day], from: today, to: ro).day ?? 0
     return max(0, days)
 }
 
